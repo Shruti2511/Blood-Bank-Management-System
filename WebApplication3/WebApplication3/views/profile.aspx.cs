@@ -10,7 +10,6 @@ using System.Configuration;
 using WebApplication3.Models;
 using System.IO;
 
-
 namespace WebApplication3.views
 {
     public partial class profile : System.Web.UI.Page
@@ -18,10 +17,6 @@ namespace WebApplication3.views
         private string cs = ConfigurationManager.ConnectionStrings["bloodbankConnectionString"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            
-
-
 
             HttpCookie cookie = Request.Cookies["DONOR"];
             if (cookie==null)
@@ -37,18 +32,12 @@ namespace WebApplication3.views
                   string imgpath=  r.returnscalar("select count(img_id) from donor_img where img_fk_donor=" + Session["u_id"].ToString());
                   if (imgpath.Equals("0"))
                   {
-                      Image1.ImageUrl = "~/img/profile-icon-9.png";
-                      
+                      Image1.ImageUrl = "~/img/icon.png";
                   }
                   else
                   {
                       Image1.ImageUrl = r.returnscalar("select img_path from donor_img where img_fk_donor=" + Session["u_id"].ToString());
                   }
-
-
-
-
-
 
 
                     string q = "select d_id,d_name,d_cnic,d_email,d_contact,d_age,B.B_NAME,h.hos_name from user_donor d inner join hospitals h on h.hos_id=d.d_hospital JOIN  bloodgroup B ON B.b_id=d_blood where d.d_id=" + Session["u_id"];
@@ -70,15 +59,9 @@ namespace WebApplication3.views
                             Label7.Text = reader.GetValue(7).ToString();  
                         }
                         
-
-
-
-
-
                     }
                     catch (Exception)
                     {
-
 
                     }
                     finally
@@ -92,10 +75,8 @@ namespace WebApplication3.views
                     Response.Redirect("~/views/login.aspx");
                 }
 
-
             }
-        
-        
+             
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -117,13 +98,10 @@ namespace WebApplication3.views
 
 	       }
 
-            
-
-
         }
 
 
-        //fileupload method.....
+        //fileupload method
 
         public string file_upload( FileUpload fileupload ,string id)
         {
@@ -150,33 +128,19 @@ namespace WebApplication3.views
                         msg = "~/Uploads/" + id + fileupload.FileName;
                         fileupload.SaveAs(Server.MapPath(msg));
                     }
-
-
-
+		    
                 }
-
-
 
 
             }
             else
             {
                 Response.Write("<script>alert('please select a file '); </script> ");
-
             }
 
             return msg;
 
-
-        }//method end......
-
-
-
-
-
-
-
-
+        }
 
     }
 }
