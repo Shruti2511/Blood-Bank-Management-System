@@ -10,9 +10,8 @@ namespace WebApplication3.Models
         public int cid { get; set; }
         public string commenttxt { get; set; }
         public int cidfkon { get; set; }
-
+        
         public int cidfkfrom { get; set; }
-
-
+        
     }
 }
