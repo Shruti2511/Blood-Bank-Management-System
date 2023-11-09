@@ -12,7 +12,6 @@ namespace WebApplication3.Models
     {
         private string cs = ConfigurationManager.ConnectionStrings["bloodbankConnectionString"].ConnectionString;
 
-
         public string insert_donor(donors d)
         {
             string msg = "-1";
@@ -30,7 +29,6 @@ namespace WebApplication3.Models
                 cmd.Parameters.Add("@d_contact", SqlDbType.NVarChar, 50).Value = d.d_contact;
                 cmd.Parameters.Add("@d_blood", SqlDbType.NVarChar, 3).Value = d.d_bgroup;
                 
-                //@
                 SqlParameter para = new SqlParameter();
                 para.SqlDbType = SqlDbType.Int;
                 para.Direction = ParameterDirection.Output;
@@ -47,7 +45,6 @@ namespace WebApplication3.Models
             }
             catch (Exception)
             {
-                
                
             }
             finally
@@ -55,16 +52,8 @@ namespace WebApplication3.Models
                 con.Close();
             }
 
-
-
             return msg;
         }
-
-
-
-
-
-
 
 
         public string insert_donor_img(donor_img d)
@@ -84,7 +73,6 @@ namespace WebApplication3.Models
             }
             catch (Exception)
             {
-
 
             }
             finally
@@ -108,11 +96,9 @@ namespace WebApplication3.Models
                 cmd.Parameters.Add("@comment_fk_fromprofileid", SqlDbType.Int).Value = c.cidfkfrom;
                 con.Open();
                 cmd.ExecuteNonQuery();
-
             }
             catch (Exception)
             {
-
 
             }
             finally
@@ -122,12 +108,6 @@ namespace WebApplication3.Models
 
             return msg;
         }
-
-
-
-
-
-
 
     }
 }
