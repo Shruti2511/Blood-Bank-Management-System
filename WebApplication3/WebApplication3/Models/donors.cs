@@ -18,6 +18,5 @@ namespace WebApplication3.Models
         public int d_hosp_id { get; set; }
         public string d_bgroup { get; set; }
         
-
     }
 }
